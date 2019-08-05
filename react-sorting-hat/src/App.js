@@ -2,17 +2,28 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import SortingForm from './components/SortingForm'
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    // set state here
+    this.toggleVis = this.toggleVis.bind(this);
+    this.state = {
+        visibility: false
+    }
+  };
+
+  toggleVis () {
+    return this.setState((a) => ({visibility: !a.visibility}))
+  };
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h2>Welcome, new student! It's time to get sorted into your House.</h2>
+        {!this.state.visibility && <button onClick={this.toggleVis}>BEGIN</button>}
+        {this.state.visibility && <SortingForm />}
       </div>
     );
   }
