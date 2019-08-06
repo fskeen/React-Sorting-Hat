@@ -1,4 +1,5 @@
 import React from 'react'
+import Result from './Result'
 
 class SortingForm extends React.Component {
     constructor(props) {
@@ -51,11 +52,15 @@ class SortingForm extends React.Component {
             result[num] = result[num] ? result[num] + 1 : 1
         }
 
-        // Object.entries(result).sort(function(a,b){
-        //     return a.
-        // })
+        const stepOne = Object.entries(result).sort(function(a,b){
+            return b[1] - a[1]
+        })
 
-        console.log(Object.entries(result))
+        const stepTwo = stepOne.filter(arr => {
+            return arr[1] === stepOne[0][1] 
+        })
+        this.setState({result: stepTwo[Math.floor(Math.random() * stepTwo.length)][0]})
+
     }
 
     render() {
@@ -339,7 +344,7 @@ class SortingForm extends React.Component {
                 
             {console.log(this.state)}
             </form>}
-            {/*this.state.completed && <Result result={this.state.result} />*/}
+            {this.state.completed && <Result id={this.state.result} />}
             </>
         )
     }
