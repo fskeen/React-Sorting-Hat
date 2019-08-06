@@ -23,7 +23,7 @@ class App extends Component {
       <div className="App">
         <h2>Welcome, new student! It's time to get sorted into your House.</h2>
         {!this.state.visibility && <button onClick={this.toggleVis}>BEGIN</button>}
-        {this.state.visibility && <SortingForm />}
+        {this.state.visibility && <SortingForm submit={this.submitForm}/>}
       </div>
     );
   }
