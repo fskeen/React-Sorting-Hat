@@ -5,7 +5,7 @@ class SortingForm extends React.Component {
         super(props);
         this.state = {
             visCounter: 1,
-            q1: undefined,
+            q1: null,
             q2: null,
             q3: null,
             q4: null,
@@ -51,7 +51,11 @@ class SortingForm extends React.Component {
             result[num] = result[num] ? result[num] + 1 : 1
         }
 
-        console.log(result)
+        // Object.entries(result).sort(function(a,b){
+        //     return a.
+        // })
+
+        console.log(Object.entries(result))
     }
 
     render() {
@@ -96,7 +100,9 @@ class SortingForm extends React.Component {
                         id="q1-id4" onClick={this.handleChange}/>
                     <label htmlFor="q1-id4">Answer 4</label>
                 </div>
-                <button disabled={!this.state.q1} onClick={this.nextQuestion}>Continue</button>
+                <button
+                    disabled={!this.state.q1}
+                    onClick={this.nextQuestion}>Continue</button>
             </div>}
                 
             {/* Question 2 */}
@@ -140,7 +146,9 @@ class SortingForm extends React.Component {
                         onClick={this.handleChange}/>
                     <label htmlFor="q2-id4">Answer 4</label>
                 </div>
-                <button onClick={this.nextQuestion}>Continue</button>
+                <button
+                    disabled={!this.state.q2}
+                    onClick={this.nextQuestion}>Continue</button>
             </div>}
                 
             {/* Question 3 */}
@@ -184,7 +192,9 @@ class SortingForm extends React.Component {
                         onClick={this.handleChange}/>
                     <label htmlFor="q3-id4">Answer 4</label>
                 </div>
-                <button onClick={this.nextQuestion}>Continue</button>
+                <button
+                disabled={!this.state.q3}
+                    onClick={this.nextQuestion}>Continue</button>
             </div>}
                 
             {/* Question 4 */}
@@ -228,7 +238,9 @@ class SortingForm extends React.Component {
                         onClick={this.handleChange}/>
                     <label htmlFor="q4-id4">Answer 4</label>
                 </div>
-                <button onClick={this.nextQuestion}>Continue</button>
+                <button
+                disabled={!this.state.q4}
+                    onClick={this.nextQuestion}>Continue</button>
             </div>}
                 
             {/* Question 5 */}
@@ -272,7 +284,9 @@ class SortingForm extends React.Component {
                         onClick={this.handleChange}/>
                     <label htmlFor="q5-id4">Answer 4</label>
                 </div>
-                <button onClick={this.nextQuestion}>Continue</button>
+                <button
+                    disabled={!this.state.q5}
+                    onClick={this.nextQuestion}>Continue</button>
             </div>}
                 
             {/* Question 6 */}
@@ -316,7 +330,9 @@ class SortingForm extends React.Component {
                         onClick={this.handleChange}/>
                     <label htmlFor="q6-id4">Answer 4</label>
                 </div>
-                <button onClick={this.nextQuestion}>Results</button>
+                <button
+                    disabled={!this.state.q6}
+                    onClick={this.nextQuestion}>Results</button>
             </div>}
 
             {this.state.visCounter === 7 && <button onClick = {this.submitForm}>Click to see results!</button>}
