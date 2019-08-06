@@ -42,11 +42,22 @@ class SortingForm extends React.Component {
         e.preventDefault();
         console.log("completed!")
         this.setState((a) => ({completed: !a.completed}))
+
+        const scores = [this.state.q1, this.state.q2, this.state.q3, this.state.q4, this.state.q5, this.state.q6]
+        const result = {}
+
+        for (let i = 0; i < scores.length; i++) {
+            let num = scores[i];
+            result[num] = result[num] ? result[num] + 1 : 1
+        }
+
+        console.log(result)
     }
 
     render() {
         return (
-            {this.state.completed === false ? <form>
+            <>
+            {!this.state.completed && <form>
             {/* Question 1 */}
             {this.state.visCounter === 1 && <div className="question-wrapper">
                 <p className="question-text">Question 1</p>
@@ -311,7 +322,9 @@ class SortingForm extends React.Component {
             {this.state.visCounter === 7 && <button onClick = {this.submitForm}>Click to see results!</button>}
                 
             {console.log(this.state)}
-            </form> : <div>yay</div>}
+            </form>}
+            {/*this.state.completed && <Result result={this.state.result} />*/}
+            </>
         )
     }
 }
